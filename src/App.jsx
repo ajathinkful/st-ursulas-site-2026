@@ -4,6 +4,7 @@ function App() {
   return (
     <div className="site">
 
+      {/* Header */}
       <header className="header">
         <div className="container header-content">
           <div>
@@ -20,9 +21,21 @@ function App() {
         </div>
       </header>
 
+
+      {/* Facility Photo Banner */}
+      <section className="facility-banner">
+        <div className="facility-photo-placeholder">
+          <div>
+            <span>FACILITY PHOTO</span>
+            <p>Photo of St. Ursula Food Pantry</p>
+          </div>
+        </div>
+      </section>
+
+
       <main>
 
-        {/* Main information */}
+        {/* Main Information */}
         <section className="hero">
           <div className="container">
 
@@ -52,13 +65,11 @@ function App() {
               </p>
             </div>
 
-            
-
           </div>
         </section>
 
 
-        {/* Quick information */}
+        {/* Quick Information */}
         <section className="quick-section">
           <div className="container">
 
@@ -75,6 +86,7 @@ function App() {
                 </p>
               </div>
 
+
               <div className="quick-card">
                 <p className="card-label">Additional Program</p>
 
@@ -86,6 +98,7 @@ function App() {
 
                 <strong>9:00 AM – 4:00 PM</strong>
               </div>
+
 
               <div className="quick-card">
                 <p className="card-label">Location</p>
@@ -125,21 +138,26 @@ function App() {
               </p>
             </div>
 
+
             <div className="contact-details">
 
               <div>
                 <span>Phone</span>
+
                 <a href="tel:3045993822">
                   304-599-3822
                 </a>
               </div>
 
+
               <div>
                 <span>Email</span>
+
                 <a href="mailto:stursulaoutreach@gmail.com">
                   stursulaoutreach@gmail.com
                 </a>
               </div>
+
 
               <a
                 href="mailto:stursulaoutreach@gmail.com"
@@ -176,7 +194,7 @@ function App() {
         </section>
 
 
-        {/* Community partners */}
+        {/* Community Partners */}
         <section className="section light-section">
           <div className="container narrow">
 
@@ -194,7 +212,7 @@ function App() {
         </section>
 
 
-        {/* About / additional information */}
+        {/* Additional Information */}
         <section className="section">
           <div className="container narrow">
 
@@ -214,7 +232,43 @@ function App() {
         </section>
 
 
-        {/* Existing church website */}
+        {/* About Us / Sister Rachel */}
+        <section className="about-section">
+          <div className="container about-grid">
+
+            <div className="sister-photo-placeholder">
+              <div>
+                <span>PHOTO PLACEHOLDER</span>
+                <p>Sister Rachel</p>
+              </div>
+            </div>
+
+
+            <div className="about-content">
+
+              <p className="eyebrow">About Us</p>
+
+              <h2>Serving our community</h2>
+
+              <p>
+                PLACEHOLDER — information about Sister Rachel
+                and her work with St. Ursula Food Pantry & Outreach
+                can go here.
+              </p>
+
+              <p>
+                PLACEHOLDER — a short biography, history of the
+                pantry, or information about the organization's
+                mission can go here.
+              </p>
+
+            </div>
+
+          </div>
+        </section>
+
+
+        {/* Existing Church Website */}
         <section className="church-link-section">
           <div className="container">
 
@@ -237,6 +291,7 @@ function App() {
       </main>
 
 
+      {/* Footer */}
       <footer className="footer">
         <div className="container">
 
@@ -249,7 +304,10 @@ function App() {
           </p>
 
           <p>
-            Phone: <a href="tel:3045993822">304-599-3822</a>
+            Phone:{' '}
+            <a href="tel:3045993822">
+              304-599-3822
+            </a>
           </p>
 
           <p>

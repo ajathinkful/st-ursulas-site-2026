@@ -28,7 +28,9 @@ a {
 }
 
 
-/* Header */
+/* =========================================
+   HEADER
+========================================= */
 
 .header {
   background: #ffffff;
@@ -58,7 +60,45 @@ a {
 }
 
 
-/* Buttons */
+/* =========================================
+   FACILITY PHOTO BANNER
+========================================= */
+
+.facility-banner {
+  width: 100%;
+}
+
+.facility-photo-placeholder {
+  height: 300px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    #b9cee2,
+    #dce9f5
+  );
+
+  color: #55718a;
+}
+
+.facility-photo-placeholder span {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.facility-photo-placeholder p {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
 
 .contact-button {
   display: inline-block;
@@ -79,7 +119,9 @@ a {
 }
 
 
-/* Typography */
+/* =========================================
+   TYPOGRAPHY
+========================================= */
 
 .eyebrow {
   margin: 0 0 10px;
@@ -116,7 +158,9 @@ h3 {
 }
 
 
-/* Hero */
+/* =========================================
+   HERO / MAIN INFORMATION
+========================================= */
 
 .hero {
   padding: 90px 0 80px;
@@ -132,7 +176,9 @@ h3 {
 }
 
 
-/* Most important information */
+/* =========================================
+   MOST IMPORTANT INFORMATION
+========================================= */
 
 .important-notice {
   max-width: 850px;
@@ -166,7 +212,9 @@ h3 {
 }
 
 
-/* Quick info */
+/* =========================================
+   QUICK INFORMATION
+========================================= */
 
 .quick-section {
   padding: 65px 0;
@@ -198,7 +246,9 @@ h3 {
 }
 
 
-/* Sections */
+/* =========================================
+   GENERAL SECTIONS
+========================================= */
 
 .section {
   padding: 80px 0;
@@ -209,7 +259,9 @@ h3 {
 }
 
 
-/* Contact */
+/* =========================================
+   CONTACT
+========================================= */
 
 .contact-section {
   padding: 80px 0;
@@ -262,7 +314,61 @@ h3 {
 }
 
 
-/* Church link */
+/* =========================================
+   ABOUT US / SISTER RACHEL
+========================================= */
+
+.about-section {
+  padding: 90px 0;
+  background: #f4f7fa;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.sister-photo-placeholder {
+  min-height: 480px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    #c4d7e8,
+    #e1ebf3
+  );
+
+  border-radius: 5px;
+  color: #55718a;
+}
+
+.sister-photo-placeholder span {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.sister-photo-placeholder p {
+  margin: 5px 0 0;
+}
+
+.about-content h2 {
+  margin-bottom: 25px;
+}
+
+.about-content p:not(.eyebrow) {
+  color: #5d7184;
+}
+
+
+/* =========================================
+   CHURCH LINK
+========================================= */
 
 .church-link-section {
   padding: 45px 0;
@@ -285,7 +391,9 @@ h3 {
 }
 
 
-/* Footer */
+/* =========================================
+   FOOTER
+========================================= */
 
 .footer {
   padding: 50px 0 25px;
@@ -313,7 +421,9 @@ h3 {
 }
 
 
-/* Mobile */
+/* =========================================
+   MOBILE
+========================================= */
 
 @media (max-width: 800px) {
 
@@ -334,6 +444,10 @@ h3 {
     font-size: 0.9rem;
   }
 
+  .facility-photo-placeholder {
+    height: 220px;
+  }
+
   .hero {
     padding: 65px 0;
   }
@@ -341,8 +455,6 @@ h3 {
   .important-notice {
     padding: 25px;
   }
-
-  
 
   .quick-grid,
   .contact-content {
@@ -357,8 +469,18 @@ h3 {
     gap: 40px;
   }
 
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .sister-photo-placeholder {
+    min-height: 350px;
+  }
+
   .section,
-  .contact-section {
+  .contact-section,
+  .about-section {
     padding: 60px 0;
   }
 }
