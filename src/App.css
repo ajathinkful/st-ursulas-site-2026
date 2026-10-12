@@ -1,131 +1,71 @@
-* {
+/* St. Ursula Food Pantry & Outreach — main stylesheet */
+
+/* 1. Design tokens */
+:root {
+  --color-brown: #672613;
+  --color-brown-hover: #4e1b0e;
+  --color-red: #c92d3a;
+  --color-red-hover: #a91e25;
+  --color-cream: #fbf4e4;
+  --color-white: #ffffff;
+  --color-text: #19324a;
+  --color-text-muted: #536b80;
+  --color-text-light: #d7e4ef;
+  --color-border: #dce5ee;
+  --container-width: 1150px;
+  --container-gutter: 48px;
+  --radius: 5px;
+}
+
+/* 2. Global layout and defaults */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 1rem;
 }
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #19324a;
-  background: #ffffff;
-  line-height: 1.65;
+  color: var(--color-text);
+  background: var(--color-white);
+  line-height: 1.7;
+}
+
+.site {
+  min-height: 100vh;
 }
 
 a {
   color: inherit;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
 .container {
-  width: min(1050px, 90%);
-  margin: 0 auto;
+  width: min(var(--container-width), calc(100% - var(--container-gutter)));
+  margin-inline: auto;
 }
 
 .narrow {
   max-width: 800px;
 }
 
-
-/* =========================================
-   HEADER
-========================================= */
-
-.header {
-  background: #ffffff;
-  border-bottom: 1px solid #dce5ee;
-}
-
-.header-content {
-  min-height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-}
-
-.site-name {
-  margin: 0;
-  color: #0b4275;
-  font-size: 1.7rem;
-  font-weight: 800;
-  line-height: 1.1;
-}
-
-.site-subtitle {
-  margin: 4px 0 0;
-  color: #65798c;
-  font-size: 0.95rem;
-}
-
-
-/* =========================================
-   FACILITY PHOTO BANNER
-========================================= */
-
-.facility-banner {
-  width: 100%;
-}
-
-.facility-photo-placeholder {
-  height: 300px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-
-  background: linear-gradient(
-    135deg,
-    #b9cee2,
-    #dce9f5
-  );
-
-  color: #55718a;
-}
-
-.facility-photo-placeholder span {
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-}
-
-.facility-photo-placeholder p {
-  margin: 5px 0 0;
-  font-size: 0.9rem;
-}
-
-
-/* =========================================
-   BUTTONS
-========================================= */
-
-.contact-button {
-  display: inline-block;
-  padding: 11px 20px;
-  border-radius: 5px;
-  background: #c9252d;
-  color: white;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.contact-button:hover {
-  background: #a91e25;
-}
-
-.contact-button.large {
-  padding: 14px 25px;
-}
-
-
-/* =========================================
-   TYPOGRAPHY
-========================================= */
-
+/* 3. Shared typography */
 .eyebrow {
   margin: 0 0 10px;
-  color: #c9252d;
+  color: var(--color-red);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -135,226 +75,473 @@ a {
 h1,
 h2,
 h3 {
-  line-height: 1.2;
-}
-
-h1 {
-  max-width: 850px;
-  margin: 0;
-  color: #0b4275;
-  font-size: clamp(2.5rem, 6vw, 4.7rem);
-  letter-spacing: -0.03em;
+  margin-top: 0;
+  color: var(--color-brown);
+  line-height: 1.25;
+  font-weight: 700;
 }
 
 h2 {
-  margin: 0 0 20px;
-  color: #0b4275;
-  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 20px;
+  font-size: clamp(1.8rem, 3vw, 2.35rem);
 }
 
 h3 {
-  margin: 0 0 12px;
-  color: #0b4275;
+  margin-bottom: 20px;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
 }
 
-
-/* =========================================
-   HERO / MAIN INFORMATION
-========================================= */
-
-.hero {
-  padding: 90px 0 80px;
-  background: #eef5fb;
-  border-bottom: 5px solid #c9252d;
+/* 4. Header and site identity */
+.header {
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
 }
 
-.intro {
-  max-width: 700px;
-  margin: 25px 0 45px;
-  color: #536b80;
-  font-size: 1.25rem;
+.header-content {
+  min-height: 170px;
+  padding-block: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
 }
 
-
-/* =========================================
-   MOST IMPORTANT INFORMATION
-========================================= */
-
-.important-notice {
-  max-width: 850px;
-  padding: 35px;
-  background: white;
-  border-left: 6px solid #c9252d;
-  border-radius: 5px;
-  box-shadow: 0 5px 25px rgba(20, 50, 80, 0.08);
+.brand {
+  min-width: 0;
 }
 
-.important-notice h2 {
-  margin-bottom: 12px;
+.brand .eyebrow {
+  margin-bottom: 8px;
+}
+
+.site-name {
+  max-width: 800px;
+  margin: 0;
+  color: var(--color-brown);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.site-subtitle {
+  margin: 16px 0 0;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+}
+
+.header-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.donate-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.payment-methods {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.venmo-label {
+  color: #008cff;
+  font-weight: 700;
+}
+
+.paypal-label {
+  color: #003087;
+  font-weight: 700;
+}
+
+/* 5. Buttons */
+.contact-button {
+  display: inline-block;
+  padding: 11px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  color: var(--color-white);
+  background: var(--color-red);
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-button.large {
+  padding: 14px 25px;
+}
+
+.contact-button.donate-button {
+  color: var(--color-white);
+  background: var(--color-red);
+  border-color: var(--color-red);
+}
+
+.contact-button.donate-button:hover {
+  background: var(--color-red-hover);
+  border-color: var(--color-red-hover);
+}
+
+.contact-button.email-button {
+  color: var(--color-brown);
+  background: var(--color-white);
+  border-color: var(--color-brown);
+}
+
+.contact-button.email-button:hover {
+  color: var(--color-brown);
+  background: var(--color-cream);
+}
+
+.contact-button:not(.donate-button):not(.email-button):hover {
+  background: var(--color-red-hover);
+}
+
+/* 6. Facility photo banner */
+.facility-banner {
+  width: 100%;
+}
+
+.facility-photo-placeholder {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  background: linear-gradient(135deg, #eee2cd, var(--color-cream));
+  color: var(--color-brown);
+}
+
+.facility-photo-placeholder span,
+.sister-photo-placeholder span {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.facility-photo-placeholder p,
+.sister-photo-placeholder p {
+  margin: 5px 0 0;
+}
+
+/* 7. Program cards and program details */
+.programs-wrapper {
+  padding: 48px 0 64px;
+  background: var(--color-white);
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 36px;
+}
+
+.program-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--color-red);
+  border-radius: var(--radius);
+  background: var(--color-white);
+}
+
+.program-section h2 {
+  margin-bottom: 18px;
+}
+
+.program-description {
+  flex: 1 0 auto;
+  margin-bottom: 0;
+}
+
+.program-description p + p {
+  margin-top: 14px;
 }
 
 .hours {
   display: flex;
   flex-direction: column;
-  margin: 25px 0;
-  padding: 20px;
-  background: #f1f6fa;
+  gap: 2px;
+  margin: 22px 0;
+  padding: 18px;
+  background: #f7f2e9;
   border-radius: 4px;
 }
 
 .hours strong {
-  color: #0b4275;
-  font-size: 1.1rem;
+  color: var(--color-brown);
+  font-size: 1.05rem;
 }
 
 .hours span {
-  color: #536b80;
+  color: var(--color-text-muted);
 }
 
-
-/* =========================================
-   QUICK INFORMATION
-========================================= */
-
-.quick-section {
-  padding: 65px 0;
+.hours a {
+  text-underline-offset: 2px;
 }
 
-.quick-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+/* 8. Program photo slideshow */
+.program-slideshow {
+  width: 100%;
+  min-width: 0;
+  flex-shrink: 0;
+  margin-top: 0;
+  padding-top: 24px;
 }
 
-.quick-card {
-  padding: 30px;
-  border: 1px solid #dce5ee;
-  border-radius: 5px;
+.slideshow-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #e1ebf3;
 }
 
-.quick-card p {
-  color: #5d7184;
+.slideshow-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.card-label {
-  margin: 0 0 8px;
-  color: #c9252d !important;
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+.slideshow-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  color: var(--color-brown);
 }
 
+.slideshow-placeholder span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
 
-/* =========================================
-   GENERAL SECTIONS
-========================================= */
+.slideshow-placeholder p {
+  margin: 6px 0 0;
+}
 
+.slideshow-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+}
+
+.slideshow-dots,
+.slideshow-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.slideshow-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 1px solid var(--color-text-muted);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.slideshow-dot.active {
+  background: var(--color-brown);
+  border-color: var(--color-brown);
+}
+
+.slideshow-buttons button {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-brown);
+  font: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.slideshow-buttons button:hover {
+  background: var(--color-cream);
+}
+
+.slideshow-buttons button:focus-visible,
+.slideshow-dot:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 3px;
+}
+
+/* 9. General content sections */
 .section {
   padding: 80px 0;
 }
 
-.light-section {
-  background: #f4f7fa;
+.section p + p {
+  margin-top: 14px;
 }
 
+.light-section {
+  background: var(--color-cream);
+}
 
-/* =========================================
-   CONTACT
-========================================= */
+#contact,
+#donate {
+  scroll-margin-top: 1.5rem;
+}
 
+/* 10. Community partner logos */
+.partner-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.partner-logos img {
+  width: auto;
+  height: 85px;
+  max-width: 180px;
+  object-fit: contain;
+}
+
+/* 11. Additional information and church link */
+.church-link {
+  margin: 28px 0;
+  padding: 22px 24px;
+  background: var(--color-cream);
+  border-left: 4px solid var(--color-brown);
+  border-radius: var(--radius);
+}
+
+.church-link p {
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+.church-link a {
+  display: inline-block;
+  color: var(--color-brown);
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.church-link a:hover {
+  color: var(--color-red);
+}
+
+.additional-note {
+  margin-top: 28px;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* 12. Contact section */
 .contact-section {
   padding: 80px 0;
-  background: #0b4275;
-  color: white;
+  background: var(--color-brown);
+  color: var(--color-white);
 }
 
 .contact-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 70px;
   align-items: center;
 }
 
 .contact-section h2 {
-  color: white;
+  color: var(--color-white);
 }
 
 .contact-section .eyebrow {
-  color: #ff7278;
+  color: #ffb5a9;
 }
 
 .contact-section p {
-  color: #d7e4ef;
+  color: var(--color-text-light);
 }
 
 .contact-details {
   display: flex;
   flex-direction: column;
   gap: 22px;
+  min-width: 0;
 }
 
 .contact-details span {
   display: block;
-  color: #a9c0d4;
+  color: #f0d8cc;
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .contact-details a:not(.contact-button) {
-  color: white;
+  color: var(--color-white);
   font-size: 1.15rem;
   font-weight: 700;
   text-decoration: none;
+  overflow-wrap: anywhere;
 }
 
 .contact-details a:not(.contact-button):hover {
   text-decoration: underline;
 }
 
-
-/* =========================================
-   ABOUT US / SISTER RACHEL
-========================================= */
-
+/* 13. About section */
 .about-section {
   padding: 90px 0;
-  background: #f4f7fa;
+  background: var(--color-cream);
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
   gap: 70px;
   align-items: center;
 }
 
 .sister-photo-placeholder {
-  min-height: 480px;
+  min-height: 400px;
   display: grid;
   place-items: center;
+  padding: 24px;
   text-align: center;
-
-  background: linear-gradient(
-    135deg,
-    #c4d7e8,
-    #e1ebf3
-  );
-
-  border-radius: 5px;
-  color: #55718a;
-}
-
-.sister-photo-placeholder span {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-}
-
-.sister-photo-placeholder p {
-  margin: 5px 0 0;
+  background: linear-gradient(135deg, #eee2cd, var(--color-cream));
+  border-radius: var(--radius);
+  color: var(--color-brown);
 }
 
 .about-content h2 {
@@ -365,48 +552,20 @@ h3 {
   color: #5d7184;
 }
 
-
-/* =========================================
-   CHURCH LINK
-========================================= */
-
-.church-link-section {
-  padding: 45px 0;
-  background: #eaf1f7;
-}
-
-.church-link-section p {
-  margin: 0 0 8px;
-  color: #536b80;
-}
-
-.church-link-section a {
-  color: #0b4275;
-  font-weight: 800;
-  text-decoration: none;
-}
-
-.church-link-section a:hover {
-  color: #c9252d;
-}
-
-
-/* =========================================
-   FOOTER
-========================================= */
-
+/* 14. Footer */
 .footer {
   padding: 50px 0 25px;
-  background: #071f36;
-  color: white;
+  background: var(--color-brown);
+  color: var(--color-white);
 }
 
 .footer p {
-  color: #aebdca;
+  margin-top: 12px;
+  color: #f0d8cc;
 }
 
 .footer a {
-  color: white;
+  color: var(--color-white);
 }
 
 .footer strong {
@@ -414,55 +573,29 @@ h3 {
 }
 
 .copyright {
-  margin-top: 35px;
+  margin-top: 35px !important;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   font-size: 0.8rem;
 }
 
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 800px) {
-
+/* 15. Tablet layout */
+@media (max-width: 900px) {
   .header-content {
-    min-height: 75px;
+    min-height: auto;
+    align-items: flex-start;
   }
 
-  .site-name {
-    font-size: 1.35rem;
+  .header-actions {
+    padding-top: 26px;
   }
 
-  .site-subtitle {
-    font-size: 0.8rem;
+  .programs-grid {
+    gap: 22px;
   }
 
-  .contact-button {
-    padding: 9px 15px;
-    font-size: 0.9rem;
-  }
-
-  .facility-photo-placeholder {
-    height: 220px;
-  }
-
-  .hero {
-    padding: 65px 0;
-  }
-
-  .important-notice {
-    padding: 25px;
-  }
-
-  .quick-grid,
-  .contact-content {
-    grid-template-columns: 1fr;
-  }
-
-  .quick-grid {
-    gap: 15px;
+  .program-section {
+    padding: 22px;
   }
 
   .contact-content {
@@ -470,17 +603,97 @@ h3 {
   }
 
   .about-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
     gap: 40px;
+  }
+}
+
+/* 16. Mobile layout */
+@media (max-width: 700px) {
+  :root {
+    --container-gutter: 32px;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 18px;
+    padding-block: 24px;
+  }
+
+  .site-name {
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
+  }
+
+  .site-subtitle {
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+
+  .header-actions {
+    padding-top: 0;
+  }
+
+  .facility-photo-placeholder {
+    min-height: 200px;
+  }
+
+  .programs-wrapper {
+    padding: 30px 0 45px;
+  }
+
+  .programs-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .program-section {
+    padding: 22px;
+  }
+
+  .program-slideshow {
+    padding-top: 24px;
+  }
+
+  .contact-content,
+  .about-grid {
+    grid-template-columns: 1fr;
   }
 
   .sister-photo-placeholder {
-    min-height: 350px;
+    min-height: 300px;
   }
 
   .section,
   .contact-section,
   .about-section {
-    padding: 60px 0;
+    padding: 55px 0;
+  }
+}
+
+/* Small phones */
+@media (max-width: 400px) {
+  .header-actions {
+    width: 100%;
+  }
+
+  .header-actions .contact-button {
+    flex: 1;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+
+  .program-section {
+    padding: 18px;
+  }
+}
+
+/* Accessibility: respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .contact-button {
+    transition: none;
   }
 }
