@@ -315,6 +315,7 @@ h3 {
   overflow: hidden;
   border-radius: var(--radius);
   background: #e1ebf3;
+  touch-action: pan-y;
 }
 
 .slideshow-image img {

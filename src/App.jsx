@@ -4,17 +4,48 @@ import { useEffect, useState } from 'react'
 
 function ProgramSlideshow({ slides, label }) {
   const [activeIndex, setActiveIndex] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true)
+  const [touchStart, setTouchStart] = useState(null)
 
   const currentSlide = slides[activeIndex]
 
-  function showPrevious() {
+  function pauseAndShow(index) {
+  setIsPlaying(false)
+  setActiveIndex(index)
+}
+
+function showPrevious() {
+  setIsPlaying(false)
+  setActiveIndex((index) => (index - 1 + slides.length) % slides.length)
+}
+
+function showNext() {
+  setIsPlaying(false)
+  setActiveIndex((index) => (index + 1) % slides.length)
+}
+
+  function handleTouchStart(event) {
+  setTouchStart(event.touches[0].clientX)
+}
+
+function handleTouchEnd(event) {
+  if (touchStart === null) return
+
+  const touchEnd = event.changedTouches[0].clientX
+  const distance = touchStart - touchEnd
+
+ if (Math.abs(distance) > 40) {
+  setIsPlaying(false)
+
+  if (distance > 0) {
+    setActiveIndex((index) => (index + 1) % slides.length)
+  } else {
     setActiveIndex((index) => (index - 1 + slides.length) % slides.length)
   }
+}
 
-  function showNext() {
-    setActiveIndex((index) => (index + 1) % slides.length)
-  }
+  setTouchStart(null)
+}
 
   useEffect(() => {
     if (!isPlaying || slides.length < 2) return
@@ -28,7 +59,11 @@ function ProgramSlideshow({ slides, label }) {
 
   return (
     <div className="program-slideshow" aria-label={`${label} photo slideshow`}>
-      <div className="slideshow-image">
+      <div
+  className="slideshow-image"
+  onTouchStart={handleTouchStart}
+  onTouchEnd={handleTouchEnd}
+>
         {currentSlide.src ? (
           <img src={currentSlide.src} alt={currentSlide.alt} />
         ) : (
@@ -48,7 +83,7 @@ function ProgramSlideshow({ slides, label }) {
               className={`slideshow-dot ${index === activeIndex ? 'active' : ''}`}
               aria-label={`Show photo ${index + 1}`}
               aria-pressed={index === activeIndex}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => pauseAndShow(index)}
             />
           ))}
         </div>
@@ -173,9 +208,9 @@ function App() {
                 </div>
 
                 <ProgramSlideshow
-  slides={babyProgramPhotos}
-  label="Baby and Toddler Program"
-/>
+                  slides={babyProgramPhotos}
+                  label="Baby and Toddler Program"
+                />
               </section>
             </div>
           </div>
