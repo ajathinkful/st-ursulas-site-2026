@@ -10,42 +10,42 @@ function ProgramSlideshow({ slides, label }) {
   const currentSlide = slides[activeIndex]
 
   function pauseAndShow(index) {
-  setIsPlaying(false)
-  setActiveIndex(index)
-}
+    setIsPlaying(false)
+    setActiveIndex(index)
+  }
 
-function showPrevious() {
-  setIsPlaying(false)
-  setActiveIndex((index) => (index - 1 + slides.length) % slides.length)
-}
-
-function showNext() {
-  setIsPlaying(false)
-  setActiveIndex((index) => (index + 1) % slides.length)
-}
-
-  function handleTouchStart(event) {
-  setTouchStart(event.touches[0].clientX)
-}
-
-function handleTouchEnd(event) {
-  if (touchStart === null) return
-
-  const touchEnd = event.changedTouches[0].clientX
-  const distance = touchStart - touchEnd
-
- if (Math.abs(distance) > 40) {
-  setIsPlaying(false)
-
-  if (distance > 0) {
-    setActiveIndex((index) => (index + 1) % slides.length)
-  } else {
+  function showPrevious() {
+    setIsPlaying(false)
     setActiveIndex((index) => (index - 1 + slides.length) % slides.length)
   }
-}
 
-  setTouchStart(null)
-}
+  function showNext() {
+    setIsPlaying(false)
+    setActiveIndex((index) => (index + 1) % slides.length)
+  }
+
+  function handleTouchStart(event) {
+    setTouchStart(event.touches[0].clientX)
+  }
+
+  function handleTouchEnd(event) {
+    if (touchStart === null) return
+
+    const touchEnd = event.changedTouches[0].clientX
+    const distance = touchStart - touchEnd
+
+    if (Math.abs(distance) > 40) {
+      setIsPlaying(false)
+
+      if (distance > 0) {
+        setActiveIndex((index) => (index + 1) % slides.length)
+      } else {
+        setActiveIndex((index) => (index - 1 + slides.length) % slides.length)
+      }
+    }
+
+    setTouchStart(null)
+  }
 
   useEffect(() => {
     if (!isPlaying || slides.length < 2) return
@@ -60,10 +60,10 @@ function handleTouchEnd(event) {
   return (
     <div className="program-slideshow" aria-label={`${label} photo slideshow`}>
       <div
-  className="slideshow-image"
-  onTouchStart={handleTouchStart}
-  onTouchEnd={handleTouchEnd}
->
+        className="slideshow-image"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         {currentSlide.src ? (
           <img src={currentSlide.src} alt={currentSlide.alt} />
         ) : (
@@ -125,16 +125,43 @@ const babyProgramPhotos = [
 
 
 function App() {
+  const [enlargedQr, setEnlargedQr] = useState(null);
+
+  useEffect(() => {
+    if (!enlargedQr) return;
+
+    function handleEscape(event) {
+      if (event.key === "Escape") {
+        setEnlargedQr(null);
+      }
+    }
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [enlargedQr]);
+
   return (
     <div className="site">
       {/* Header: identity and most important contact actions */}
       <header className="header">
         <div className="container header-content">
+
           <div className="brand">
-            <p className="eyebrow">Morgantown, West Virginia</p>
-            <h1 className="site-name">St. Ursula Food Pantry &amp; Outreach</h1>
-            <p className="site-subtitle">St. Mary Roman Catholic Church</p>
+            <a href="/" className="site-logo-link" aria-label="St. Ursula home">
+              <img
+                src="/st-ursula-logo.png"
+                alt=""
+                className="site-logo"
+              />
+            </a>
+
+            <div className="brand-text">
+              <p className="eyebrow">Pursglove, West Virginia</p>
+              <h1 className="site-name">St. Ursula Food Pantry &amp; Outreach</h1>
+              <p className="site-subtitle">St. Mary Roman Catholic Church</p>
+            </div>
           </div>
+
 
 
           <div className="header-actions">
@@ -186,8 +213,10 @@ function App() {
                   </div>
                   <p>Emergency food orders are available for eligible first-time families and individuals.</p>
                   <p>
-                    Proof of Monongalia County residency (such as a document showing your address)
-                    and household income are required for food assistance.
+                    Proof of Monongalia County residency (such as a piece of mail
+                    showing your current address) and household income are required for
+                    food assistance. Please bring a piece of regular mail, not junk mail,
+                    as proof of residency.
                   </p>
                 </div>
 
@@ -218,12 +247,45 @@ function App() {
 
         {/* Location */}
         <section className="section light-section">
+
           <div className="container">
-            <p className="eyebrow">Location</p>
-            <h2>Where We Are</h2>
-            <p>St. Ursula Food Pantry &amp; Outreach<br />St. Ursula, Rt. 19 &amp; 7</p>
-            <p>Pursglove, WV 26546</p>
+            <div className="location-layout">
+              <div className="location-info">
+                <p className="eyebrow">Location</p>
+                <h2>Where We Are</h2>
+
+                <p>
+                  St. Ursula Food Pantry &amp; Outreach<br />
+                  St. Ursula, Rt. 19 &amp; 7
+                </p>
+
+                <p>Pursglove, WV 26546</p>
+
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=87+Pursglove+Rd%2C+Pursglove%2C+WV+26546"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="directions-link"
+                >
+                  Get Directions →
+                </a>
+              </div>
+
+              <div className="location-map">
+                <iframe
+                  title="Map to St. Ursula Food Pantry & Outreach"
+                  src="https://maps.google.com/maps?q=87%20Pursglove%20Rd%2C%20Pursglove%2C%20WV%2026546&output=embed"
+                  width="100%"
+                  height="300"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </div>
           </div>
+
         </section>
 
         {/* Contact */}
@@ -249,7 +311,106 @@ function App() {
             <h2>Help support our food pantry</h2>
             <p>We accept food and monetary donations from the general community.</p>
             <p>We are active participants in community food drives and Empty Bowls Monongalia.</p>
-            {/* Venmo and PayPal QR codes can be added here later. */}
+
+            <div className="donation-options">
+              <div className="donation-option">
+                <h3>Venmo</h3>
+                <button
+                  type="button"
+                  className="donation-qr-button"
+                  aria-label="Enlarge Venmo QR code"
+                  onClick={() =>
+                    setEnlargedQr({
+                      src: "/venmostursula.png",
+                      alt: "Venmo QR code for St. Ursula Food Pantry",
+                      title: "Donate with Venmo",
+                    })
+                  }
+                >
+                  <img
+                    src="/venmostursula.png"
+                    alt="Venmo QR code for St. Ursula Food Pantry"
+                    className="donation-qr"
+                  />
+                </button>
+                <p className="donation-hint">Tap or click to enlarge</p>
+                <a
+                  href="https://account.venmo.com/u/StursulaPantry90"
+                  className="donation-link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Donate with Venmo
+                </a>
+              </div>
+
+              <div className="donation-option">
+                <h3>PayPal</h3>
+                <button
+                  type="button"
+                  className="donation-qr-button"
+                  aria-label="Enlarge PayPal QR code"
+                  onClick={() =>
+                    setEnlargedQr({
+                      src: "/paypalstursula.png",
+                      alt: "PayPal QR code for St. Ursula Food Pantry",
+                      title: "Donate with PayPal",
+                    })
+                  }
+                >
+                  <img
+                    src="/paypalstursula.png"
+                    alt="PayPal QR code for St. Ursula Food Pantry"
+                    className="donation-qr"
+                  />
+                </button>
+                <p className="donation-hint">Tap or click to enlarge</p>
+                <a
+                  href="https://www.paypal.com/qrcodes/managed/7263b690-6b6d-4220-bf2c-1de1e73de762?utm_source=bizapp_download"
+                  className="donation-link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Donate with PayPal
+                </a>
+              </div>
+            </div>
+
+            {enlargedQr && (
+              <div
+                className="qr-overlay"
+                role="dialog"
+                aria-modal="true"
+                aria-label={enlargedQr.title}
+                onClick={() => setEnlargedQr(null)}
+              >
+                <div
+                  className="qr-modal"
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  <button
+                    type="button"
+                    className="qr-close"
+                    onClick={() => setEnlargedQr(null)}
+                    aria-label="Close enlarged QR code"
+                  >
+                    &times;
+                  </button>
+
+                  <h3>{enlargedQr.title}</h3>
+
+                  <img
+                    src={enlargedQr.src}
+                    alt={enlargedQr.alt}
+                    className="qr-modal-image"
+                  />
+
+                  <p>Scan this code with your phone to donate.</p>
+                </div>
+              </div>
+            )}
+
+
           </div>
         </section>
 
@@ -261,17 +422,10 @@ function App() {
             <h2>Working together to fight hunger</h2>
 
             <p>
-              St. Ursula Food Pantry is a member of the United Way Family
-              Resource Network Food and Hunger Committee and the Mountaineer
-              Food Bank. We also participate in community food drives and
-              Empty Bowls Monongalia.
+              St. Ursula Food Pantry is a member of the United Way Family Resource Network Food and Hunger Committee and Mountaineer Food Bank. We also participate in the annual Postal Food Drive and Empty Bowls Monongalia. Many local churches and community agencies support St. Ursula in its mission to help those facing food insecurity.
             </p>
 
             <div className="partner-logos" aria-label="Community partner logos">
-              <img
-                src="/images.png"
-                alt="United Way"
-              />
               <img
                 src="/Mountaineer-Foodbank-logo-bg-2026.png"
                 alt="Mountaineer Food Bank"
@@ -289,7 +443,7 @@ function App() {
 
             <div className="church-link">
               <p>
-                St. Ursula is part of the St. Mary Roman Catholic Church community.
+                St. Ursula is a ministry of St. Mary Roman Catholic Church.
               </p>
               <a
                 href="https://www.stmarystarcity.com/"
