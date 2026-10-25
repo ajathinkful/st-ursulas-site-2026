@@ -68,14 +68,16 @@ function ProgramSlideshow({ slides, label }) {
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        {currentSlide.src ? (
-          <img src={currentSlide.src} alt={currentSlide.alt} />
-        ) : (
-          <div className="slideshow-placeholder">
-            <span>PHOTO</span>
-            <p>{currentSlide.alt}</p>
-          </div>
+
+
+        {currentSlide.src && (
+          <img
+            src={currentSlide.src}
+            alt={currentSlide.alt}
+          />
         )}
+
+
       </div>
 
       <div className="slideshow-controls">
@@ -544,6 +546,10 @@ function App() {
               <p>Phone: <a href="tel:3045993822">304-599-3822</a></p>
               <p>Email: <a href="mailto:stursulaoutreach@gmail.com">stursulaoutreach@gmail.com</a></p>
               <p className="copyright">© {new Date().getFullYear()} St. Ursula Food Pantry &amp; Outreach</p>
+
+              <p className="staff-login-link">
+                <a href="/employee">Staff Login</a>
+              </p>
             </div>
           </footer>
         </div>

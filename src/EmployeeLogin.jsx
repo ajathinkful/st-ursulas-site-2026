@@ -18,7 +18,12 @@ export default function EmployeeLogin() {
     setError('')
     setNotice('')
 
-    if (username.trim().toLowerCase() !== 'ursula') {
+    const expectedUsername = import.meta.env.VITE_EMPLOYEE_USERNAME
+
+    if (
+      !expectedUsername ||
+      username.trim().toLowerCase() !== expectedUsername.trim().toLowerCase()
+    ) {
       setError('Incorrect username or password.')
       return
     }
@@ -71,11 +76,11 @@ export default function EmployeeLogin() {
           redirectTo: `${window.location.origin}/employee/reset-password`,
         })
 
-if (resetError) {
-  console.error('Password reset error:', resetError)
-  setError(resetError.message)
-  return
-}
+      if (resetError) {
+        console.error('Password reset error:', resetError)
+        setError(resetError.message)
+        return
+      }
 
       setNotice(
         'If the staff account exists, a password-reset email will be sent. Check your inbox and spam folder.'
@@ -144,19 +149,16 @@ if (resetError) {
           </button>
         </form>
 
+
         <button
           type="button"
+          className="employee-forgot-password"
           onClick={handleForgotPassword}
           disabled={isSendingReset || isLoading}
-          style={{
-            marginTop: '12px',
-            background: 'transparent',
-            color: '#245b47',
-            textDecoration: 'underline',
-          }}
         >
           {isSendingReset ? 'Sending email...' : 'Forgot password?'}
         </button>
+
 
         <a className="employee-back-link" href="/">
           ← Back to the public website
