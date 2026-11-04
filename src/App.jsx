@@ -300,48 +300,82 @@ function App() {
               </div>
             </section>
 
-            {/* Location */}
-            <section className="section light-section">
+     
+{/* Location */}
+<section className="section light-section">
+  <div className="container">
 
-              <div className="container">
-                <div className="location-layout">
-                  <div className="location-info">
-                    <p className="eyebrow">Location</p>
-                    <h2>Where We Are</h2>
+    {/* Location heading and facility address */}
+    <div className="location-heading">
+      <p className="eyebrow">Location</p>
+      <h2>Where We Are</h2>
 
-                    <p>
-                      St. Ursula Food Pantry &amp; Outreach<br />
-                      St. Ursula, Rt. 19 &amp; 7
-                    </p>
+      <p>
+        St. Ursula Food Pantry &amp; Outreach<br />
+        St. Ursula, Rt. 19 &amp; 7
+      </p>
 
-                    <p>Pursglove, WV 26546</p>
+      <p>Pursglove, WV 26546</p>
+    </div>
 
-                    <a
-                      href="https://www.google.com/maps/dir/?api=1&destination=87+Pursglove+Rd%2C+Pursglove%2C+WV+26546"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="directions-link"
-                    >
-                      Get Directions →
-                    </a>
-                  </div>
+    {/* Program cards and map */}
+    <div className="location-layout">
 
-                  <div className="location-map">
-                    <iframe
-                      title="Map to St. Ursula Food Pantry & Outreach"
-                      src="https://maps.google.com/maps?q=87%20Pursglove%20Rd%2C%20Pursglove%2C%20WV%2026546&output=embed"
-                      width="100%"
-                      height="300"
-                      style={{ border: 0 }}
-                      loading="lazy"
-                      allowFullScreen
-                      referrerPolicy="no-referrer-when-downgrade"
-                    />
-                  </div>
-                </div>
-              </div>
+      <div className="program-directions">
+        <div>
+          <h3>Baby &amp; Toddler Program — Upstairs</h3>
+          <p>
+            For GPS directions, use:<br />
+            87 Pursglove Rd, Pursglove, WV 26546
+          </p>
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=87+Pursglove+Rd%2C+Pursglove%2C+WV+26546"
+            target="_blank"
+            rel="noreferrer"
+            className="directions-link"
+          >
+            Get Directions — Baby &amp; Toddler →
+          </a>
+        </div>
 
-            </section>
+        <div>
+          <h3>Food Pantry — Downstairs</h3>
+          <p>
+            For GPS directions, use:<br />
+            650 Blue Horizon Drive, WV 26501
+          </p>
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=650+Blue+Horizon+Drive%2C+WV+26501"
+            target="_blank"
+            rel="noreferrer"
+            className="directions-link"
+          >
+            Get Directions — Food Pantry →
+          </a>
+        </div>
+      </div>
+
+      <div className="location-map">
+        <iframe
+          title="Map to St. Ursula Food Pantry & Outreach"
+          src="https://maps.google.com/maps?q=87%20Pursglove%20Rd%2C%20Pursglove%2C%20WV%2026546&output=embed"
+          width="100%"
+          height="440"
+          style={{ border: 0 }}
+          loading="lazy"
+          allowFullScreen
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </div>
+
+      <p className="directions-note">
+        Please use the directions for the specific program you are visiting.
+        The map shows the St. Ursula facility.
+      </p>
+
+    </div>
+  </div>
+</section>
 
             {/* Contact */}
             <section className="contact-section" id="contact">
