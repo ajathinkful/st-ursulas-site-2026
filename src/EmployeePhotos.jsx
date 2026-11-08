@@ -293,7 +293,12 @@ export default function EmployeePhotos() {
 
             <section className="employee-photo-groups">
                 {photoSlots.map((slot) => (
-                    <section className="employee-photo-group" key={slot.id}>
+                    <section
+    className={`employee-photo-group ${
+        slot.id === 'sister-rachel' ? 'employee-photo-group--portrait' : ''
+    }`}
+    key={slot.id}
+>
                         <h2>{slot.title}</h2>
                         <p>{slot.description}</p>
 

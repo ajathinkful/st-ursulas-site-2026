@@ -1,0 +1,131 @@
+
+.employee-dashboard-page {
+  min-height: 100vh;
+  padding: 30px 24px;
+  background: #f7f6f0;
+  box-sizing: border-box;
+}
+
+.employee-dashboard-header {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #dce4dc;
+}
+
+.employee-dashboard-header img {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+}
+
+.employee-dashboard-header h1 {
+  margin: 0;
+  color: #174c39;
+}
+
+.employee-dashboard-header p {
+  margin: 5px 0 0;
+  color: #5c665f;
+}
+
+.employee-dashboard-eyebrow {
+  color: #176047 !important;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.employee-dashboard-header button {
+  margin-left: auto;
+  padding: 11px 18px;
+  border: 1px solid #176047;
+  border-radius: 8px;
+  background: white;
+  color: #176047;
+  cursor: pointer;
+}
+
+.employee-dashboard-content {
+  max-width: 1000px;
+  margin: 55px auto;
+}
+
+.employee-dashboard-content h2 {
+  color: #174c39;
+  font-size: 1.8rem;
+}
+
+.employee-dashboard-content > p {
+  color: #5c665f;
+}
+
+.employee-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.employee-dashboard-card {
+  padding: 30px;
+  text-align: left;
+  background: white;
+  border: 1px solid #dce4dc;
+  border-top: 4px solid #36844d;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.employee-dashboard-card:hover {
+  box-shadow: 0 8px 22px rgba(24, 57, 42, 0.09);
+  transform: translateY(-2px);
+}
+
+.dashboard-card-icon {
+  font-size: 2rem;
+}
+
+.employee-dashboard-card h3 {
+  color: #174c39;
+  font-size: 1.35rem;
+}
+
+.employee-dashboard-card p {
+  color: #5c665f;
+  line-height: 1.6;
+}
+
+.dashboard-card-link {
+  color: #176047;
+  font-weight: 700;
+}
+
+.employee-dashboard-back {
+  display: inline-block;
+  margin-top: 35px;
+  color: #176047;
+  text-decoration: none;
+}
+
+@media (max-width: 650px) {
+  .employee-dashboard-header {
+    flex-wrap: wrap;
+  }
+
+  .employee-dashboard-header button {
+    margin-left: 0;
+  }
+
+  .employee-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .employee-dashboard-content {
+    margin-top: 35px;
+  }
+}

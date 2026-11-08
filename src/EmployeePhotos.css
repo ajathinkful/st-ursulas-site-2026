@@ -266,3 +266,8 @@
         min-height: 200px;
     }
 }
+/* Keep Sister Rachel portrait upload area compact */
+.employee-photo-group--portrait .employee-photo-slot {
+    width: 100%;
+    max-width: 350px;
+}

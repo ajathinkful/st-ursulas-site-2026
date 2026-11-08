@@ -5,6 +5,9 @@ import EmployeeLogin from './EmployeeLogin.jsx'
 import EmployeePhotos from './EmployeePhotos.jsx'
 import EmployeeResetPassword from './EmployeeResetPassword.jsx'
 import { supabase } from './supabase.js'
+import EmployeeDashboard from './EmployeeDashboard.jsx'
+import EmployeeAnnouncements from './EmployeeAnnouncements.jsx'
+import AnnouncementCarousel from './AnnouncementCarousel.jsx'
 
 function ProgramSlideshow({ slides, label }) {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -184,7 +187,16 @@ function App() {
       <Route
         path="/employee/reset-password"
         element={<EmployeeResetPassword />}
+        />
+        <Route
+  path="/employee/dashboard"
+  element={<EmployeeDashboard />}
+
       />
+      <Route
+  path="/employee/announcements"
+  element={<EmployeeAnnouncements />}
+/>
       <Route path="*" element={
         <div className="site">
           {/* Header: identity and most important contact actions */}
@@ -249,8 +261,11 @@ function App() {
           </section>
 
 
-          <main>
-            {/* Programs appear immediately after the banner */}
+           <main>
+            {/* Website Announcements */}
+            <AnnouncementCarousel />
+
+            {/* Programs appear immediately after announcements */}
             <section className="programs-wrapper" aria-label="Programs">
               <div className="container">
                 <div className="programs-grid">

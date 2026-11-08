@@ -49,7 +49,7 @@ export default function EmployeeLogin() {
         return
       }
 
-      navigate('/employee/photos')
+      navigate('/employee/dashboard')
     } catch {
       setError('Unable to sign in right now. Please try again.')
     } finally {
